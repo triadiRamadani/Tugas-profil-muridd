@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triadi Ramadani — Graphic Designer & Illustrator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #121212; /* Hitam agak ke-abuan */
+            --text-color: #EAEAEA; /* Putih sedikit abu */
+            --accent-maroon: #6A1B29; /* Merah agak marun tua */
+            --accent-border: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            cursor: crosshair;
+        }
+
+        /* Floating 3D/Geometric Elements (Brutalism/Swiss Style) */
+        .floating-element {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.75;
+            z-index: 1;
+            animation: floatRandom 12s ease-in-out infinite alternate;
+        }
+
+        .elem-1 { top: 10%; left: 5%; width: 60px; height: 60px; background: var(--accent-maroon); transform: rotate(15deg); }
+        .elem-2 { top: 25%; right: 8%; border: 3px solid var(--text-color); width: 80px; height: 80px; border-radius: 50%; animation-duration: 15s; }
+        .elem-3 { top: 60%; left: 10%; width: 100px; height: 40px; background: #222; border: 1px solid var(--text-color); transform: rotate(-30deg); }
+        .elem-4 { bottom: 15%; right: 12%; width: 50px; height: 90px; background: var(--accent-maroon); animation-duration: 9s; }
+        .elem-5 { top: 45%; left: 45%; width: 25px; height: 25px; background: var(--text-color); border-radius: 50%; }
+
+        @keyframes floatRandom {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(10deg); }
+            100% { transform: translateY(20px) rotate(-15deg); }
+        }
+
+        /* Layout Dinamis */
+        header {
+            position: relative;
+            z-index: 2;
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-bottom: 2px solid var(--accent-border);
+        }
+
+        .top-badge {
+            display: inline-block;
+            background: var(--accent-maroon);
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--text-color);
+        }
+
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(3rem, 8vw, 7.5rem);
+            line-height: 0.95;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        h1 span {
+            color: var(--accent-maroon);
+            -webkit-text-stroke: 2px var(--text-color);
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
+            padding: 4rem 2rem;
+        }
+
+        .card {
+            background: rgba(25, 25, 25, 0.7);
+            border: 2px solid var(--accent-border);
+            padding: 2.5rem;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .card:hover {
+            border-color: var(--accent-maroon);
+            transform: translateY(-5px);
+            background: rgba(35, 30, 32, 0.9);
+        }
+
+        .bio-card {
+            grid-column: span 7;
+        }
+
+        .school-card {
+            grid-column: span 5;
+            background: var(--accent-maroon);
+            border-color: var(--text-color);
+        }
+
+        .skills-card {
+            grid-column: span 12;
+        }
+
+        .card h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .card p, .card li {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .school-card p, .school-card h3 {
+            color: var(--text-color);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-item {
+            padding: 1.5rem;
+            border: 1px dashed var(--accent-border);
+            background: rgba(0,0,0,0.3);
+        }
+
+        .skill-item h4 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        /* Footer / Ending Quote */
+        footer {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 8rem 2rem 4rem 2rem;
+            border-top: 2px solid var(--accent-border);
+        }
+
+        .quote-creative {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(4rem, 12vw, 11rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--text-color);
+            letter-spacing: -3px;
+            line-height: 1;
+            display: inline-block;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .quote-creative:hover {
+            color: var(--accent-maroon);
+            transform: scale(1.03);
+            -webkit-text-stroke: 3px var(--text-color);
+        }
+
+        .footer-info {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #777;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .bio-card, .school-card {
+                grid-column: span 12;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Elements (Benda mati melayang ala Brutalism/Swiss) -->
+    <div class="floating-element elem-1"></div>
+    <div class="floating-element elem-2"></div>
+    <div class="floating-element elem-3"></div>
+    <div class="floating-element elem-4"></div>
+    <div class="floating-element elem-5"></div>
+
+    <!-- Header / Intro -->
+    <header>
+        <div class="top-badge">Portfolio 2026 // Experimental Swiss</div>
+        <h1>Triadi <span>Ramadani</span></h1>
+    </header>
+
+    <!-- Content Layout Dinamis -->
+    <main class="container">
+        
+        <!-- Bio Card -->
+        <div class="card bio-card">
+            <h3>Tentang Saya</h3>
+            <p>Halo! Aku Triadi Ramadani. Seorang pelajar kreatif yang menempuh pendidikan di <strong>SMAN 19 Bandung</strong>, tepatnya di kelas <strong>X J</strong>. Memiliki ketertarikan mendalam pada estetika visual, tata letak eksperimental, serta eksplorasi bentuk dan warna dalam dunia seni digital.</p>
+        </div>
+
+        <!-- School / Status Card -->
+        <div class="card school-card">
+            <h3>Identitas Akademik</h3>
+            <p style="margin-top: 1rem;">🏫 <strong>SMAN 19 Bandung</strong></p>
+            <p>🎯 <strong>Kelas:</strong> X J</p>
+            <p>⚡ <strong>Fokus:</strong> Kreatif & Visual Art</p>
+        </div>
+
+        <!-- Skills Card -->
+        <div class="card skills-card">
+            <h3>Bidang Keahlian Utama</h3>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h4>Desainer Grafis</h4>
+                    <p>Merancang identitas visual, poster bergaya Swiss-Brutalism, tata letak grid asimetris, dan materi publikasi digital.</p>
+                </div>
+                <div class="skill-item">
+                    <h4>Ilustrator</h4>
+                    <p>Menciptakan karya ilustrasi digital yang ekspresif, eksplorasi karakter, dan penggabungan elemen seni rupa kontemporer.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer dengan Kata "Be Creative" -->
+    <footer>
+        <div class="quote-creative">Be Creative</div>
+        <div class="footer-info">© 2026 Triadi Ramadani — SMAN 19 Bandung. All Rights Reserved.</div>
+    </footer>
+
+</body>
+</html>
